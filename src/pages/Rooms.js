@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
 import {Link} from "react-router-dom";
 const Rooms = ({ match }) => {
     // App.js /:kind로 설정해둔 값입니다.
