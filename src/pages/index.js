@@ -5,7 +5,7 @@ export {default as Rooms} from "./Rooms";
 export{default as Room} from "./Room";
 export{default as SignUp} from "./SignUp";
 export{default as BulletinBoard} from "./Bulletinboard";
-
+export{default as Selection} from "./Selection";
 
 
 
