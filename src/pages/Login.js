@@ -2,7 +2,8 @@ import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Header from "../components/layout/Header";
 import LoginForm from "../components/login/LoginForm";
-function Login(){
+import axios from 'axios';
+function Login(props){
     const [inputs,setInputs]=useState({
         userId:'',
         userPw:''
@@ -21,24 +22,41 @@ function Login(){
         console.log(userId,userPw);
 
     }
+    const handleSubmit=(e)=>{
+
+      axios
+        .post(
+          "http://localhost:3000/login",
+          {
+            user:{
+              userId,
+              userPw
+            }
+          },
+          {withCredentials:true}
+        )
+        .then(response=>{
+          if(response.data.status==="created"){
+            props.handleSuccessfulAuth(response.data);
+          }
+        })
+        .catch(error=>{
+          console.log("registration error",error);
+        });
+
+
+    }
     return (
         <div>
+          <form onSubmit={handleSubmit}>
             <Header/>
             <h3 id="title">Login</h3>
             <LoginForm userId={userId} userPw={userPw} onChange={onChange}/>
-            <button onClick={onCreate}>Login</button>
+            <button type="submit" onClick={onCreate}>Login</button>
+            {/*onClick과 관련 함수는 사라져야할 것임..*/}
 
-            <p>지워져야 할 것이나 현재는 확인 수단이 없어서 밑에꺼 누르면 바로 방으로 이동</p>
             <Link to="/rooms">로그인</Link>
-
-
-
-
-
-
-
-
-
+          </form>
         </div>
 
 
