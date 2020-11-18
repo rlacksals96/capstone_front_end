@@ -1,7 +1,9 @@
 import React from "react";
 import Header from '../components/layout/Header';
 import {Link} from 'react-router-dom';
+
 import "../styles/Main.css";
+
 
 
 const Main = () => {
@@ -14,6 +16,7 @@ const Main = () => {
                 <Link to="./auth/signup"><button className="singUpButton">sign up page</button></Link>
             </div>
             
+
 
 
         </div>
