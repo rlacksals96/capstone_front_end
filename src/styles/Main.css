@@ -1,0 +1,23 @@
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginButton {
+    color: white;
+    background: teal;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid teal;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .singUpButton {
+    color: white;
+    background: teal;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid teal;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
