@@ -27,7 +27,7 @@ const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
 					placeholder="user id"
 				/>
 				<span>&nbsp;</span>
-				{/* <button onClick={checkId}>중복확인</button> */}
+
 				<IdDupChk userId={userId} />
 			</div>
 			<div>
