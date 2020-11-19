@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/SignUp.css";
+//import "../../styles/SignUp.css";
 
 import IdDupChk from "./IdDupChk";
 
 const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
-	const checkId = () => {};
-
 	const renderPwDuplicateMsg = () => {
 		if (userPw === "") return "";
 		else {
@@ -52,7 +50,7 @@ const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
 					onChange={onChange}
 					placeholder="password again..."
 				/>
-				<span className="pwCheck">&nbsp;{renderPwDuplicateMsg()}</span>
+				<span>&nbsp;{renderPwDuplicateMsg()}</span>
 			</div>
 			<div>
 				<p>이메일을 입력해주세요</p>
