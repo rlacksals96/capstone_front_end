@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/SignUp.css";
+
 import IdDupChk from "./IdDupChk";
 
 const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
@@ -9,9 +10,11 @@ const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
 		if (userPw === "") return "";
 		else {
 			return userPw === userPwRe ? (
-				<span>일치합니다</span>
+				<span style={{ color: "green", fontWeight: "bold" }}>일치합니다</span>
 			) : (
-				<span>일치하지 않습니다</span>
+				<span style={{ color: "red", fontWeight: "bold" }}>
+					일치하지 않습니다
+				</span>
 			);
 		}
 	};
