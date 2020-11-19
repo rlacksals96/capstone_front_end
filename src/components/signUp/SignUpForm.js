@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "../../styles/SignUp.css";
-const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
-	const checkId = () => {};
+import React from "react";
 
+import IdDupChk from "./IdDupChk";
+
+const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
 	const renderPwDuplicateMsg = () => {
 		if (userPw === "") return "";
 		else {
@@ -27,7 +27,8 @@ const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
 					placeholder="user id"
 				/>
 				<span>&nbsp;</span>
-				<button onClick={checkId}>중복확인</button>
+
+				<IdDupChk userId={userId} />
 			</div>
 			<div>
 				<p>사용할 비밀번호를 입력하세요</p>
