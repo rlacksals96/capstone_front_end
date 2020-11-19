@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-//import "../../styles/SignUp.css";
+import React from "react";
 
 import IdDupChk from "./IdDupChk";
 
