@@ -1,0 +1,21 @@
+li {
+	display: inline-block;
+	width: 300px;
+	list-style: none;
+
+	padding: 3px;
+	margin: 10px;
+}
+.basicImg {
+	height: auto;
+	width: 300px;
+	margin: 0%;
+	padding: 10px;
+}
+.roomTitle {
+	width: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding-left: 10px;
+}
