@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/layout/Header";
 import LoginForm from "../components/login/LoginForm";
+import LoginStatus from "../components/login/LoginStatus";
 import axios from "axios";
 function Login(props) {
 	const [inputs, setInputs] = useState({
 		userId: "",
 		userPw: "",
 	});
-
 	const { userId, userPw } = inputs;
+	const { loginStatus, setLoginStatus } = useState();
 	const onChange = (e) => {
 		const { name, value } = e.target;
 		setInputs({ ...inputs, [name]: value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		const test = {
 			userId: userId,
 			title: userPw,
@@ -31,14 +32,21 @@ function Login(props) {
 
 		e.preventDefault();
 		console.log(test); //넘어가는값 확인용. 추후 삭제
-		axios
+		await axios
 			.post(url, test)
 			.then((response) => {
-				console.log(response);
+				console.log("response: ", response);
+				if (response.status === 201) {
+					localStorage.setItem("user", JSON.stringify(response.data));
+					console.log("response.data: ", response.data);
+				}
 			})
 			.catch((error) => {
 				console.log("registration error", error);
 			});
+		//local storage확인용 ..추후 삭제
+		const myName = localStorage.getItem("user");
+		console.log("myname: ", JSON.parse(myName));
 	};
 	return (
 		<div>
@@ -49,6 +57,7 @@ function Login(props) {
 				<button type="submit">Login</button>
 			</form>
 			<br />
+			{/* {() => loginStatus()} */}
 			<Link to="/rooms">link to room</Link>
 		</div>
 	);
