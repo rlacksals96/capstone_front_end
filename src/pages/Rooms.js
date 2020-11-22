@@ -49,9 +49,9 @@ function Rooms() {
 				manageRoomContainer={manageRoomContainer}
 				resetContainer={resetContainer}
 			/>
-
+			
 			<MkRoom />
-
+			<Link to="./rooms/1"><button>방입장</button></Link>
 			{/* renderlist로 관리하려 헀으나 초기화가 확실히 안되서 일단은 roomList를 인자로 넣었음.. css처리해주고 경우의 수에 맞는 랜더링 할수 있게 고민.. */}
 			<RoomContainer renderList={renderList} />
 		</div>
