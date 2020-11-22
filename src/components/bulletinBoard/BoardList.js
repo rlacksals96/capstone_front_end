@@ -24,22 +24,7 @@ function BoardList() {
 			});
     }, []);
     
-     /* useEffect(() => {
-         const fetchBoards = async () => {
-             try{
-                 setBoards(null);
-                 const res = await axios.get(
-                    `https://jsonplaceholder.typicode.com/posts`
-                 );
-                 console.log(res.data);
-                 setBoards(res.data);
-                 console.log(boards);
-             }catch(e){
-                 console.log(e);
-             }
-         }
-         fetchBoards(); 
-     },[]) */
+ 
 
     return(
         <div className="container">
@@ -53,7 +38,7 @@ function BoardList() {
                         <th>조회수</th>
                     </tr>
                 </thead>
-                {/* <BoardContainer boards={boards}></BoardContainer> */}
+                <BoardContainer boards={boards}/>
             </Table>
         </div>
         
