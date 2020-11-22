@@ -1,20 +1,25 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import {Table} from 'reactstrap';
-import '../../styles/BulletinBoard.css';
-import BoardContainer from './BoardContainer';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-function BoardList() {
-    const [boards, setBoards] = useState([]);
+import "../../styles/BulletinBoard.css";
 
-    useEffect(() => {
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import * as ReactBootStrap from "react-bootstrap";
+import Header from "../layout/Header";
+
+const BoardList = () => {
+	const [boards, setBoards] = useState([]);
+	const [loading, setLoading] = useState(false);
+	useEffect(() => {
 		axios
 			.get(`https://jsonplaceholder.typicode.com/posts`)
 			.then((res) => {
 				if (res.status === 200) {
 					console.log(res);
-                    setBoards(res.data);
-                    console.log(boards);
+					setBoards(res.data);
+					setLoading(true);
+					console.log(boards);
 				} else {
 					console.log("wrong status");
 				}
@@ -22,28 +27,31 @@ function BoardList() {
 			.catch((err) => {
 				console.log(err);
 			});
-    }, []);
-    
- 
+	}, []);
 
-    return(
-        <div className="container">
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                        <th>조회수</th>
-                    </tr>
-                </thead>
-                <BoardContainer boards={boards}/>
-            </Table>
-        </div>
-        
-        
-    )
-}
+	const columns = [
+		{ dataField: "id", text: "id" },
+		{ dataField: "userId", text: "userId" },
+		{ dataField: "title", text: "title" },
+	];
+
+	return (
+		<div>
+			<Header />
+			<div className="container">
+				{loading ? (
+					<BootstrapTable
+						keyField="id"
+						data={boards}
+						columns={columns}
+						pagination={paginationFactory()}
+					/>
+				) : (
+					<ReactBootStrap.Spinner animation="border" />
+				)}
+			</div>
+		</div>
+	);
+};
 
 export default BoardList;
