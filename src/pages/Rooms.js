@@ -5,11 +5,12 @@ import axios from "axios";
 import RoomSearchBox from "../components/waitingRoom/RoomSearchBox";
 import MkRoom from "../components/waitingRoom/MkRoom";
 import RoomContainer from "../components/waitingRoom/RoomContainer";
+import * as ReactBootStrap from "react-bootstrap";
 
 function Rooms() {
 	const [roomList, setRoomList] = useState([]); //서버에서 가져온 값 저장.
 	const [renderList, setRenderList] = useState([]); //실제 렌더링 될 객체를 저장하고 있다.
-
+	const [loading, setLoading] = useState(false);
 	useEffect(() => {
 		axios
 			.get(`https://jsonplaceholder.typicode.com/posts`)
@@ -18,6 +19,7 @@ function Rooms() {
 					console.log(res);
 					setRoomList(res.data);
 					setRenderList(res.data);
+					setLoading(true);
 				} else {
 					console.log("wrong status");
 				}
@@ -51,9 +53,14 @@ function Rooms() {
 			/>
 
 			<MkRoom />
-
-			{/* renderlist로 관리하려 헀으나 초기화가 확실히 안되서 일단은 roomList를 인자로 넣었음.. css처리해주고 경우의 수에 맞는 랜더링 할수 있게 고민.. */}
-			<RoomContainer renderList={renderList} />
+			<Link to="./rooms/1">
+				<button>방입장</button>
+			</Link>
+			{loading ? (
+				<RoomContainer renderList={renderList} />
+			) : (
+				<ReactBootStrap.Spinner animation="border" />
+			)}
 		</div>
 	);
 }
