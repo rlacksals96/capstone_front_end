@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import {Link} from 'react-router-dom';
 import "../../styles/BulletinBoard.css";
 
 import BootstrapTable from "react-bootstrap-table-next";
@@ -30,14 +30,17 @@ const BoardList = () => {
 	}, []);
 
 	const columns = [
-		{ dataField: "id", text: "id" },
-		{ dataField: "userId", text: "userId" },
-		{ dataField: "title", text: "title" },
+		{ dataField: "id", text: "번호" },
+		{ dataField: "userId", text: "작성자" },
+		{ dataField: "title", text: "제목" },
 	];
 
 	return (
 		<div>
 			<Header />
+            <Link to="./board/create">
+                <ReactBootStrap.Button className="writeButton">글쓰기</ReactBootStrap.Button>
+            </Link>
 			<div className="container">
 				{loading ? (
 					<BootstrapTable
