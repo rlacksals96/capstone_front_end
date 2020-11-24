@@ -31,8 +31,8 @@ const BoardList = () => {
 
 	const columns = [
 		{ dataField: "id", text: "번호" },
-		{ dataField: "userId", text: "userId" },
-		{ dataField: "title", text: "title" },
+		{ dataField: "userId", text: "작성자" },
+		{ dataField: "title", text: "제목" },
 	];
 
 	return (
