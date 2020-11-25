@@ -12,6 +12,11 @@ function Rooms() {
 	const [renderList, setRenderList] = useState([]); //실제 렌더링 될 객체를 저장하고 있다.
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
+		// const config={
+		// 	headers:{
+		// 		Authorization:'Bearer '+localStorage.getItem('token')
+		// 	}
+		// }
 		axios
 			.get(`https://jsonplaceholder.typicode.com/posts`)
 			.then((res) => {
@@ -53,9 +58,9 @@ function Rooms() {
 			/>
 
 			<MkRoom />
-			<Link to="./rooms/1">
+			{/* <Link to="./rooms/1">
 				<button>방입장</button>
-			</Link>
+			</Link> */}
 			{loading ? (
 				<RoomContainer renderList={renderList} />
 			) : (
