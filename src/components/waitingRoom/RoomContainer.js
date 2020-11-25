@@ -16,8 +16,8 @@ export default function RoomContainer({ renderList }) {
 		const pw = tok.token.title;
 		console.log("userid, pw: ", userId, pw); //서버랑 맞추면 pw부분 반드시 변경해야함!!!!당연히 title이 아닌 password이런식이어야함.
 		console.log("방이름: ", title);
-		window.open("http://www.google.com");
-		// window.open("localhost:5000");
+		// window.open("http://www.google.com");
+		window.open("https://localhost:5000");
 	};
 
 	return (
