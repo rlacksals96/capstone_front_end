@@ -2,12 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Header from "../components/layout/Header";
 import LoginForm from "../components/login/LoginForm";
+// import {useHistory} from 'react-router-dom';
 import LoginStatus from "../components/login/LoginStatus";
 import axios from "axios";
-function Login(props) {
+function Login({history}) {
 	const [inputs, setInputs] = useState({
 
 		email: "",
@@ -52,9 +53,23 @@ function Login(props) {
 			.catch(error => console.log('error', error));
 
 
-		const myName = localStorage.getItem("user");
-		console.log("myname: ", JSON.parse(myName));
+		const tokenInfo = localStorage.getItem("access-token");
+		// console.log("tokenInfo: ", JSON.parse(tokenInfo));
+		if(tokenInfo){
+			history.push('/rooms');
+		}
+		// if(tokenInfo){
+		// 	const hist=useHistory();
+		// 	hist.push('/rooms');
+		// }
 	};
+	const handleClick=()=>{
+		// const tokenInfo=localStorage.getItem("access-token");
+		// if(tokenInfo){
+		//
+		// 	history.push('/rooms');
+		// }
+	}
 	return (
 		<div>
 			<Header />
@@ -62,11 +77,11 @@ function Login(props) {
 			<form onSubmit={handleSubmit}>
 
 				<LoginForm email={email} password={password} onChange={onChange} />
-				<button type="submit">Login</button>
+				<button type="submit" onClick={handleClick} >Login</button>
 			</form>
 			<br />
 			{/* {() => loginStatus()} */}
-			{/*<Link to="/rooms">link to room</Link>*/}
+			<Link to="/rooms">link to room</Link>
 
 				
 		</div>
