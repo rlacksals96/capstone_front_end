@@ -57,7 +57,7 @@ function Rooms() {
 				resetContainer={resetContainer}
 			/>
 
-			<MkRoom />
+			{/*<MkRoom />*/}
 			{/* <Link to="./rooms/1">
 				<button>방입장</button>
 			</Link> */}
