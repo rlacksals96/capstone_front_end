@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import { Main, NotFound,Rooms,Room,SignUp,Login,BulletinBoard,Selection,BoardCreate } from "./pages";
+import { Main, NotFound,Rooms,Room,SignUp,Login,BulletinBoard,Selection,BoardCreate,BoardRead } from "./pages";
 
 
 
@@ -18,6 +18,7 @@ class App extends Component {
                     <Route path="/rooms/:roomId/room" exact={true} component={Room}/>
                     <Route path="/rooms/:roomId/board" exact={true} component={BulletinBoard}/>
                     <Route path="/rooms/:roomId/board/create" exact={true} component={BoardCreate}/>
+                    {<Route path="/rooms/:roomId/board/:id" exact={true} component={BoardRead}/>}
 
                     <Route component={NotFound} />
                 </Switch>
