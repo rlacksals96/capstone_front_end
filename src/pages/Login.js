@@ -1,5 +1,7 @@
 
+
 import React, { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import Header from "../components/layout/Header";
 import LoginForm from "../components/login/LoginForm";
@@ -7,15 +9,18 @@ import LoginStatus from "../components/login/LoginStatus";
 import axios from "axios";
 function Login(props) {
 	const [inputs, setInputs] = useState({
+
 		email: "",
 		password: "",
 	});
 	const { email, password } = inputs;
 	const { loginStatus, setLoginStatus } = useState();
+
 	const onChange = (e) => {
 		const { name, value } = e.target;
 		setInputs({ ...inputs, [name]: value });
 	};
+
 
 	const handleSubmit = async (e) => {
 
@@ -46,6 +51,7 @@ function Login(props) {
 			})
 			.catch(error => console.log('error', error));
 
+
 		const myName = localStorage.getItem("user");
 		console.log("myname: ", JSON.parse(myName));
 	};
@@ -54,12 +60,15 @@ function Login(props) {
 			<Header />
 			<h3 id="title">Login</h3>
 			<form onSubmit={handleSubmit}>
+
 				<LoginForm email={email} password={password} onChange={onChange} />
 				<button type="submit">Login</button>
 			</form>
 			<br />
 			{/* {() => loginStatus()} */}
 			{/*<Link to="/rooms">link to room</Link>*/}
+
+				
 		</div>
 	);
 }

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {
   "name": "capstone_front_end",
   "version": "0.1.0",
@@ -51,7 +51,7 @@
   "proxy": "https://172.20.10.3:5000"
 
 }
-=======
+
 {
   "name": "capstone_front_end",
   "version": "0.1.0",
@@ -101,4 +101,4 @@
     ]
   }
 }
->>>>>>> 58fc36781201c06016890bd48db265af0ae7c063
+
