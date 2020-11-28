@@ -1,8 +1,10 @@
+
+
 import React from "react";
 
 import IdDupChk from "./IdDupChk";
 
-const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
+const SignUpForm = ({ userPw, userPwRe, email, onChange }) => {
 	const renderPwDuplicateMsg = () => {
 		if (userPw === "") return "";
 		else {
@@ -17,18 +19,28 @@ const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
 	};
 	return (
 		<div>
-			<div>
-				<p>사용할 아이디를 입력하세요</p>
-				<input
-					type="text"
-					name="userId"
-					value={userId}
-					onChange={onChange}
-					placeholder="user id"
-				/>
-				<span>&nbsp;</span>
+			{/*<div>*/}
+			{/*	<p>사용할 아이디를 입력하세요</p>*/}
+			{/*	<input*/}
+			{/*		type="text"*/}
+			{/*		name="userId"*/}
+			{/*		value={userId}*/}
+			{/*		onChange={onChange}*/}
+			{/*		placeholder="user id"*/}
+			{/*	/>*/}
+			{/*	<span>&nbsp;</span>*/}
 
-				<IdDupChk userId={userId} />
+			{/*	<IdDupChk userId={userId} />*/}
+			{/*</div>*/}
+			<div>
+				<p>이메일을 입력해주세요</p>
+				<input
+					type="email"
+					name="email"
+					value={email}
+					onChange={onChange}
+					placeholder="email"
+				/>
 			</div>
 			<div>
 				<p>사용할 비밀번호를 입력하세요</p>
@@ -49,21 +61,14 @@ const SignUpForm = ({ userId, userPw, userPwRe, email, onChange }) => {
 					onChange={onChange}
 					placeholder="password again..."
 				/>
-				<span>&nbsp;{renderPwDuplicateMsg()}</span>
+				{/*<span>&nbsp;{renderPwDuplicateMsg()}</span>*/}
 			</div>
-			<div>
-				<p>이메일을 입력해주세요</p>
-				<input
-					type="email"
-					name="email"
-					value={email}
-					onChange={onChange}
-					placeholder="email"
-				/>
-			</div>
+
 			<br />
 		</div>
 	);
 };
 
 export default SignUpForm;
+
+
