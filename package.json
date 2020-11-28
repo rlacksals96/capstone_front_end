@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
+    "http-proxy-middleware": "^1.0.6",
     "qs": "^6.9.4",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
@@ -27,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -44,5 +46,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://172.20.10.3:5000"
+
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const LoginForm=({userId, userPw, onChange})=>{
+const LoginForm=({email, password, onChange})=>{
     return(
         <div>
-            <input type="text" name="userId" value={userId} onChange={onChange} placeholder="User id"/><br/>
-            <input type="password" name="userPw" value={userPw} onChange={onChange} placeholder="User password"/>
+            <input type="email" name="email" value={email} onChange={onChange} placeholder="email"/><br/>
+            <input type="password" name="password" value={password} onChange={onChange} placeholder="User password"/>
 
 
 
