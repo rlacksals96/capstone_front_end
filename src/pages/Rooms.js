@@ -5,7 +5,12 @@ import axios from "axios";
 import RoomSearchBox from "../components/waitingRoom/RoomSearchBox";
 import MkRoom from "../components/waitingRoom/MkRoom";
 import RoomContainer from "../components/waitingRoom/RoomContainer";
+
+import * as ReactBootStrap from "react-bootstrap";
+import url from '../components/url';
+
 import {Button, Spinner} from "react-bootstrap";
+
 
 function Rooms() {
 	const [roomList, setRoomList] = useState([]); //서버에서 가져온 값 저장.
@@ -17,21 +22,31 @@ function Rooms() {
 		// 		Authorization:'Bearer '+localStorage.getItem('token')
 		// 	}
 		// }
-		axios
-			.get(`https://jsonplaceholder.typicode.com/posts`)
-			.then((res) => {
-				if (res.status === 200) {
-					console.log(res);
-					setRoomList(res.data);
-					setRenderList(res.data);
+
+			// fetch(url()+'/rooms')
+			// .then((res) => {
+			// 		const response=res.json();
+			// 	// if (res.status === 200) {
+			// 		console.log(response);
+			// 		// setRoomList(res.data);
+			// 		// setRenderList(res.data);
+			// 		// setLoading(true);
+			// 	// } else {
+			// 	// 	console.log("wrong status");
+			// 	// }
+			// })
+			// .catch((err) => {
+			// 	console.log(err);
+			// });
+		fetch(url()+'/rooms')
+			.then(res => res.json())
+			.then(
+				(result) => {
 					setLoading(true);
-				} else {
-					console.log("wrong status");
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+					setRoomList(result.data)
+					setRenderList(result.data)
+				})
+			.catch(error => console.log('error', error));
 	}, []);
 
 	const manageRoomContainer = (result) => {
@@ -57,7 +72,9 @@ function Rooms() {
 				resetContainer={resetContainer}
 			/>
 
+
 			<MkRoom />
+
 
 			{/* <Link to="./rooms/1">
 				<button>방입장</button>

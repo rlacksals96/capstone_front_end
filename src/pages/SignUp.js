@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import Header from "../components/layout/Header";
 import SignUpForm from "../components/signUp/SignUpForm";
+import url from '../components/url';
 import axios from "axios";
-axios.defaults.baseURL = 'https://172.20.10.3:5000';
-axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.baseURL = 'https://172.20.10.3:5000';
+// axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 function SignUp() {
 	const [inputs, setInputs] = useState({
 		userId: "",
@@ -21,26 +22,17 @@ function SignUp() {
 	};
 	const submitHandler = (e) => {
 		e.preventDefault();
-		const test = {
-			userId:  userId ,
-			title:  userPw ,
-		};
-		// const user = {
-		// 	userId: { userId },
-		// 	userPw: { userPw },
-		// 	email: { email },
-		// };
 		const user={
 			email:email,
 			password:userPw
 		}
-		//const url = "https://jsonplaceholder.typicode.com/posts";
-		const url="/account/signup"
-		console.log(user); //넘어가는 값 확인용. 추후 삭제
+
+		// console.log(url()); //넘어가는 값 확인용. 추후 삭제
 
 		let myHeaders = new Headers();
 		myHeaders.append("Authorization", "");
 		myHeaders.append("Content-Type", "application/json");
+
 		let raw = JSON.stringify(user);
 		let requestOptions = {
 			method: 'POST',
@@ -48,7 +40,7 @@ function SignUp() {
 			body: raw,
 			redirect: 'follow'
 		};
-		fetch("https://172.20.10.3:5000/account/signup", requestOptions)
+		fetch(url()+"/account/signup", requestOptions)
 			.then(response => response.text())
 			.then(result => console.log(result))
 			.catch(error => console.log('error', error));

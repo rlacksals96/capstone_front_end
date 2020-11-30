@@ -17,7 +17,7 @@ export default function RoomContainer({ renderList }) {
 		// console.log("userid, pw: ", userId, pw); //서버랑 맞추면 pw부분 반드시 변경해야함!!!!당연히 title이 아닌 password이런식이어야함.
 		// console.log("방이름: ", title);
 		window.open("http://www.google.com");
-		// window.open("https://localhost:5000");
+		// window.open("https://localhost:3001?sessionId=eifjfjf&passcode=whatpassword&userId=myid");
 	};
 
 	return (
@@ -26,12 +26,14 @@ export default function RoomContainer({ renderList }) {
 				<li
 					className="roomContainer"
 					key={idx}
-					value={room.title}
-					onClick={() => handleClick(room.title)}
+					value={room.name}
+					onClick={() => handleClick(room.name)}
 					style={{ cursor: "pointer" }}
 				>
 					<img className="basicImg" src={basicImg} alt="no image" />
-					<div className="roomTitle">{room.title}</div>
+					<div className="roomTitle">{room.name}</div>
+					<div className="roomTitle">{room.pass.toString()}</div>
+					{console.log(room.pass)}
 				</li>
 			))}
 		</ul>

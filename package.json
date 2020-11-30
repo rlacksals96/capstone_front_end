@@ -46,6 +46,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://172.20.10.3:5000"
+  }
+
 }
