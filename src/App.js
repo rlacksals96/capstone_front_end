@@ -10,6 +10,7 @@ import {
 	BulletinBoard,
 	Selection,
 	BoardCreate,
+	BoardRead
 } from "./pages";
 //import VideoCall from "./components/VideoCall";
 class App extends Component {
@@ -28,6 +29,10 @@ class App extends Component {
 						path="/rooms/:roomId/board"
 						exact={true}
 						component={BulletinBoard}
+					/>
+					<Route path="/rooms/:roomId/board/:id" 
+						exact={true} 
+						component={BoardRead}
 					/>
 					<Route
 						path="/rooms/:roomId/board/create"

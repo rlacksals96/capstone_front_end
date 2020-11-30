@@ -35,22 +35,40 @@ function BoardCreate(){
                 "content-type": "multipart/form-data"
             }
         } */
-        try{
-            const res = await axios.post(
+        
+            /* const res = await axios.post(
                 "https://jsonplaceholder.typicode.com/posts",
                 {
                     title: {title},
                     content: {content}
-                }/* ,
-                formData *///서버하고 맞춰봐야 함
-                /* , config */ )
+                } ,
+                formData *
+                 , config)
                 console.log(res);
                 if(res.status === 201){
                     alert('저장되었습니다.');
-                }
-        } catch(e){
-            console.log(e);
-        }
+                } */
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", "");
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            title: {title},
+            content: {content}
+        });
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+            };
+        
+        console.log(); //넘어가는 값 확인용. 추후 삭제
+        fetch("/url", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
     }
 
     return(

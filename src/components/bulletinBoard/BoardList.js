@@ -12,8 +12,9 @@ import BoardRead from '../../pages/BoardRead';
 const BoardList = () => {
 	const [boards, setBoards] = useState([]);
 	const [loading, setLoading] = useState(false);
+
 	useEffect(() => {
-		axios
+		/* axios
 			.get(`https://jsonplaceholder.typicode.com/posts`)
 			.then((res) => {
 				if (res.status === 200) {
@@ -27,15 +28,45 @@ const BoardList = () => {
 			})
 			.catch((err) => {
 				console.log(err);
-			});
+			}); */
+
+
+			let myHeaders = new Headers();
+			myHeaders.append("Authorization", "");
+			myHeaders.append("Content-Type", "application/json");
+	
+			let requestOptions = {
+				method: 'GET',
+				headers: myHeaders,
+				redirect: 'follow'
+				};
+			fetch(`https://jsonplaceholder.typicode.com/posts`)
+				.then(res => res.json())
+				.then(
+					(result) => {
+					setLoading(true);
+					setBoards(result);
+				})
+				.catch(error => console.log('error', error));
+				
+		/* let response = fetch(`https://jsonplaceholder.typicode.com/posts`);
+
+		if (response.ok) { 
+			let json = response.json();
+			console.log(response);
+			setBoards(json);
+			setLoading(true);
+		} else {
+			alert("HTTP-Error: " + response.status);
+		} */
 	}, []);
 
-	const columns = [
+	/* const columns = [
 		{ dataField: "id", text: "번호" },
 		{ dataField: "userId", text: "작성자" },
 		{ dataField: "title", text: "제목" },
 	];
-	/* var id;
+	var id;
 	const rowEvents = {
 		onClick: (e, row) => {
 			console.log(row.id);
@@ -72,13 +103,13 @@ const BoardList = () => {
 						<tbody>
 						{boards.map((board) => (
 							<tr key={board.id}>
-								<th>{board.id}</th>
+								<td>{board.id}</td>
 								<Link to={'./board/'+board.id}>
-									<th>{board.title}</th>
+									<td>{board.title}</td>
 								</Link>
-								<th>writer</th>
-								<th>20.11.22</th>
-								<th>1</th>
+								<td>writer</td>
+								<td>20.11.22</td>
+								<td>1</td>
 							</tr>
 						))}
 						</tbody>
