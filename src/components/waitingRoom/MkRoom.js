@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Link} from 'react-router-dom';
 import Header from '../layout/Header'
 import url from '../url';
-export default function MkRoom({useHistory}) {
+export default function MkRoom() {
 	const [isInvitation,setIsInvitation]=useState(true)
 	// useEffect(()=>{
 	//

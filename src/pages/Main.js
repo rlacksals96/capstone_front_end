@@ -26,7 +26,3 @@ const Main = () => {
 
 export default Main;
 
-{
-	/* <Link to="./auth/login"><Button className="loginButton" color="primary" size="lg" block>login page</Button></Link> */
-}
-// <Link to="./auth/signup"><Button className="singUpButton" color="secondary" size="lg" block>sign up page</Button></Link>

@@ -16,7 +16,7 @@ function Login({history}) {
 		password: "",
 	});
 	const { email, password } = inputs;
-	const { loginStatus, setLoginStatus } = useState();
+
 
 	const onChange = (e) => {
 		const { name, value } = e.target;
@@ -32,7 +32,7 @@ function Login({history}) {
 		};
 
 		e.preventDefault();
-		console.log(url); //넘어가는값 확인용. 추후 삭제
+
 
 		let myHeaders = new Headers();
 		myHeaders.append("Authorization", "");
@@ -44,32 +44,29 @@ function Login({history}) {
 			body: raw,
 			redirect: 'follow'
 		};
+		let status='';
 		fetch(url()+"/account/signin", requestOptions)
-			.then(response => response.json())
+			.then(response => {
+				status=response.status;
+				// console.log(status);
+				return response.json()
+			})
 			.then(data => {//여기 안에 토큰도 들어가 있
-				console.log("token: ",data);
+				// console.log("token: ",data);
 				localStorage.setItem('access-token',data.accessToken);
+				if(status===200){
+					history.push('/rooms');
+				}else{
+					alert("이메일 또는 비밀번호가 잘못되었습니다");
+				}
+
 			})
 			.catch(error => console.log('error', error));
 
 
-		const tokenInfo = localStorage.getItem("access-token");
-		// console.log("tokenInfo: ", JSON.parse(tokenInfo));
-		if(tokenInfo){
-			history.push('/rooms');
-		}
-		// if(tokenInfo){
-		// 	const hist=useHistory();
-		// 	hist.push('/rooms');
-		// }
+
 	};
-	const handleClick=()=>{
-		// const tokenInfo=localStorage.getItem("access-token");
-		// if(tokenInfo){
-		//
-		// 	history.push('/rooms');
-		// }
-	}
+
 	return (
 		<div>
 			<Header />
@@ -77,12 +74,9 @@ function Login({history}) {
 			<form onSubmit={handleSubmit}>
 
 				<LoginForm email={email} password={password} onChange={onChange} />
-				<button type="submit" onClick={handleClick} >Login</button>
+				<button type="submit" onClick={handleSubmit} >Login</button>
 			</form>
 			<br />
-			{/* {() => loginStatus()} */}
-			<Link to="/rooms">link to room</Link>
-
 				
 		</div>
 	);

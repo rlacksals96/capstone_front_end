@@ -64,7 +64,7 @@ function BoardCreate(){
             redirect: 'follow'
             };
         
-        console.log(); //넘어가는 값 확인용. 추후 삭제
+
         fetch("/url", requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
