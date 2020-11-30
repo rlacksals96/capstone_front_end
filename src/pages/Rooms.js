@@ -5,7 +5,7 @@ import axios from "axios";
 import RoomSearchBox from "../components/waitingRoom/RoomSearchBox";
 import MkRoom from "../components/waitingRoom/MkRoom";
 import RoomContainer from "../components/waitingRoom/RoomContainer";
-import * as ReactBootStrap from "react-bootstrap";
+import {Button, Spinner} from "react-bootstrap";
 
 function Rooms() {
 	const [roomList, setRoomList] = useState([]); //서버에서 가져온 값 저장.
@@ -58,13 +58,15 @@ function Rooms() {
 			/>
 
 			<MkRoom />
+
 			{/* <Link to="./rooms/1">
 				<button>방입장</button>
 			</Link> */}
+
 			{loading ? (
 				<RoomContainer renderList={renderList} />
 			) : (
-				<ReactBootStrap.Spinner animation="border" />
+				<Spinner animation="border" />
 			)}
 		</div>
 	);
