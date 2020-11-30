@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Link} from 'react-router-dom';
 import Header from '../layout/Header'
 import url from '../url';
-export default function MkRoom() {
+export default function MkRoom({useHistory}) {
 	const [isInvitation,setIsInvitation]=useState(true)
 	// useEffect(()=>{
 	//
@@ -65,6 +65,10 @@ export default function MkRoom() {
 		// 		}
 		// 	})
 		// 	.catch(error => console.log('error', error));
+
+
+		window.open("http://www.google.com");
+		// history.push('/rooms');
 	}
 	const handleInput = (e) => {
 		const { name, value } = e.target;
@@ -73,7 +77,7 @@ export default function MkRoom() {
 
 	return(
 		<div>
-			<Header/>
+			{/*<Header/>*/}
 			<br/>
 			<div>방제목</div>
 			<input type="text" name="roomName" onChange={handleInput} value={roomName} placeholder="insert title"/><br/>
@@ -81,7 +85,7 @@ export default function MkRoom() {
 			<input type="checkBox" id="invitation" value={isInvitation} onChange={handleChange}/><br/>
 			<div>비밀번호</div>
 			<input type="text" name="password" onChange={handleInput} value={password} placeholder="insert password" disabled={isInvitation}/><br/>
-			<button onClick={handleConfirmClick}>확인</button>
+			<Link to='/rooms'><button onClick={handleConfirmClick}>확인</button></Link>
 			<Link to='/rooms'><button>취소</button></Link>
 		</div>
 	)

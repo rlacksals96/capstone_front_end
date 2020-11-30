@@ -73,7 +73,7 @@ function Rooms() {
 			/>
 
 
-			<MkRoom />
+			{/*<MkRoom />*/}
 
 
 			{/* <Link to="./rooms/1">

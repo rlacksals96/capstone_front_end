@@ -37,9 +37,12 @@ export default function RoomSearchBox({
 
 			</Button>
 			&nbsp;
-			<Button style={{ padding: "8px" }}>
-				방만들기
-			</Button>
+			<Link to="./rooms/mkroom">
+				<Button style={{ padding: "8px" }}>
+					방만들기
+				</Button>
+			</Link>
+
 			<Link to="./rooms/:roomId/board">
 					<Button className="boardButton" style={{ marginRight: '220px', float: 'right', marginTop: "8px" }}>게시판</Button>
 			</Link>
