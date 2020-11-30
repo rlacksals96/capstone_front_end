@@ -7,7 +7,7 @@ import axios from "axios";
 // axios.defaults.baseURL = 'https://172.20.10.3:5000';
 // axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
 // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-function SignUp() {
+function SignUp({history}) {
 	const [inputs, setInputs] = useState({
 		userId: "",
 		userPw: "",
@@ -40,9 +40,19 @@ function SignUp() {
 			body: raw,
 			redirect: 'follow'
 		};
+		let status='';
 		fetch(url()+"/account/signup", requestOptions)
-			.then(response => response.text())
-			.then(result => console.log(result))
+			.then(response => {
+				response.json()
+				status=response.status;
+			})
+			.then(result => {
+				// console.log(result)
+				if(status===200){
+					alert("회원가입이 완료 되었습니다")
+					history.goBack();
+				}
+			})
 			.catch(error => console.log('error', error));
 	 };
 	return (

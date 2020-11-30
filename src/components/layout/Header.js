@@ -5,7 +5,7 @@ import "../../styles/Header.css";
 const Header = ({ onLogout }) => (
 	<div className="header">
 		<Link to={"/"}>
-			<div className="logo">LOGO</div>
+			<div className="logo">Study With Me</div>
 		</Link>
 		<Link to={"/"}>
 			<button className="logoutBtn" onClick={handleLogout}>

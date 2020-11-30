@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route,BrowserRouter } from "react-router-dom";
 import {
 	Main,
 	NotFound,
@@ -14,10 +14,12 @@ import {
 
 } from "./pages";
 import MkRoom from './components/waitingRoom/MkRoom'
+import GetPassword from './components/waitingRoom/GetPassword';
 //import VideoCall from "./components/VideoCall";
 class App extends Component {
 	render() {
 		return (
+
 			<div>
 				<Switch>
 					<Route path="/" exact={true} component={Main} />
@@ -32,8 +34,8 @@ class App extends Component {
 						exact={true}
 						component={BulletinBoard}
 					/>
-					<Route path="/rooms/:roomId/board/:id" 
-						exact={true} 
+					<Route path="/rooms/:roomId/board/:id"
+						exact={true}
 						component={BoardRead}
 					/>
 					<Route
@@ -46,6 +48,13 @@ class App extends Component {
 						exact={true}
 						component={MkRoom}
 					/>
+					<Route
+						path="/rooms/getPassword"
+						exact={true}
+						component={GetPassword}
+					/>
+
+
 
 					<Route component={NotFound} />
 				</Switch>

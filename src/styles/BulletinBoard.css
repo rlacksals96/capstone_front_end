@@ -5,3 +5,13 @@
     margin-bottom: 10px;
     
 }
+.board-link{
+    color: black;
+    /*border: none;*/
+
+}
+.board-link:hover{
+    color: black;
+    cursor: pointer;
+    /*text-decoration: none;*/
+}

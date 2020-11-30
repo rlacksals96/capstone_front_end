@@ -12,7 +12,7 @@ import url from '../components/url';
 import {Button, Spinner} from "react-bootstrap";
 
 
-function Rooms() {
+function Rooms({history}) {
 	const [roomList, setRoomList] = useState([]); //서버에서 가져온 값 저장.
 	const [renderList, setRenderList] = useState([]); //실제 렌더링 될 객체를 저장하고 있다.
 	const [loading, setLoading] = useState(false);
@@ -43,8 +43,8 @@ function Rooms() {
 			.then(
 				(result) => {
 					setLoading(true);
-					setRoomList(result.data)
-					setRenderList(result.data)
+					setRoomList(result.data)//전체 리스트 저장하고 있음
+					setRenderList(result.data)//검색 결과에 따라 랜더링 
 				})
 			.catch(error => console.log('error', error));
 	}, []);
@@ -65,7 +65,6 @@ function Rooms() {
 	return (
 		<div>
 			<Header />
-
 			<RoomSearchBox
 				roomList={roomList}
 				manageRoomContainer={manageRoomContainer}
@@ -73,7 +72,7 @@ function Rooms() {
 			/>
 
 
-			<MkRoom />
+			{/*<MkRoom />*/}
 
 
 			{/* <Link to="./rooms/1">
@@ -81,7 +80,7 @@ function Rooms() {
 			</Link> */}
 
 			{loading ? (
-				<RoomContainer renderList={renderList} />
+				<RoomContainer history={history} renderList={renderList} />
 			) : (
 				<Spinner animation="border" />
 			)}
