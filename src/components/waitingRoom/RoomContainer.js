@@ -32,6 +32,8 @@ export default function RoomContainer({ renderList }) {
 				>
 					<img className="basicImg" src={basicImg} alt="no image" />
 					<div className="roomTitle">{room.name}</div>
+					<div className="roomTitle">{room.pass.toString()}</div>
+					{console.log(room.pass)}
 				</li>
 			))}
 		</ul>
