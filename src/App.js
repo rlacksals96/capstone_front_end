@@ -10,6 +10,7 @@ import {
 	BulletinBoard,
 	Selection,
 	BoardCreate,
+	BoardRead
 
 } from "./pages";
 import MkRoom from './components/waitingRoom/MkRoom'
@@ -30,6 +31,10 @@ class App extends Component {
 						path="/rooms/:roomId/board"
 						exact={true}
 						component={BulletinBoard}
+					/>
+					<Route path="/rooms/:roomId/board/:id" 
+						exact={true} 
+						component={BoardRead}
 					/>
 					<Route
 						path="/rooms/:roomId/board/create"

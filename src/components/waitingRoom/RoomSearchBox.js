@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 export default function RoomSearchBox({
 	roomList,
@@ -27,15 +28,22 @@ export default function RoomSearchBox({
 				value={searchTitle}
 			/>
 			&nbsp;
-			<button style={{ padding: "8px" }} onClick={handleBtn}>
+			<Button style={{ padding: "8px" }} onClick={handleBtn}>
 				검색
-			</button>
+			</Button>
 			&nbsp;
-			<button style={{ padding: "8px" }} onClick={resetContainer}>
+			<Button style={{ padding: "8px" }} onClick={resetContainer}>
 				초기화
-			</button>
-			{/*<button><Link to='/rooms/mkroom'>방생성</Link></button>*/}
-			<Link to='/rooms/mkroom'><button style={{padding:"8px"}}>방생성</button></Link>
+
+			</Button>
+			&nbsp;
+			<Button style={{ padding: "8px" }}>
+				방만들기
+			</Button>
+			<Link to="./rooms/:roomId/board">
+					<Button className="boardButton" style={{ marginRight: '220px', float: 'right', marginTop: "8px" }}>게시판</Button>
+			</Link>
+
 		</div>
 	);
 }
