@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom';
 import Header from '../layout/Header'
+import url from '../url';
 export default function MkRoom() {
 	const [isInvitation,setIsInvitation]=useState(true)
 	// useEffect(()=>{
@@ -25,14 +26,13 @@ export default function MkRoom() {
 	const handleConfirmClick=()=>{
 
 		const info={
-			roomName:roomName,
-			password:password,
-			invite:!isInvitation,
+			name:roomName,
+			passcode:password,
+			is_private:(!isInvitation).toString(),
 		}
-		//이유는 모르겠는데 isInvitation 상태의 반대로 해야 올바른 값이 전달됨.
-		console.log(info);
+		// //이유는 모르겠는데 isInvitation 상태의 반대로 해야 올바른 값이 전달됨.
+		// console.log(info);
 		let myHeaders = new Headers();
-		myHeaders.append("Authorization", "");
 		myHeaders.append("Content-Type", "application/json");
 		let raw = JSON.stringify(info);
 		let requestOptions = {
@@ -41,16 +41,30 @@ export default function MkRoom() {
 			body: raw,
 			redirect: 'follow'
 		};
-		fetch("https://172.20.10.3:5000/makeroom", requestOptions)
-			.then(response => response.json())
-			.then(res => {//여기 안에 토큰도 들어가 있
-				console.log("response: ",res);
-				//추후 링크에서 리스폰 받아오면 거기에 맞게 연결 해주기
-				if(res.response===201){
-					console.log("i got a response from server");
-				}
-			})
+		fetch(url()+"/room", requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
 			.catch(error => console.log('error', error));
+		// let myHeaders = new Headers();
+		// myHeaders.append("Authorization", "");
+		// myHeaders.append("Content-Type", "application/json");
+		// let raw = JSON.stringify(info);
+		// let requestOptions = {
+		// 	method: 'POST',
+		// 	headers: myHeaders,
+		// 	body: raw,
+		// 	redirect: 'follow'
+		// };
+		// fetch("https://192.168.0.4:8080/room", requestOptions)
+		// 	.then(response => response.json())
+		// 	.then(res => {//여기 안에 토큰도 들어가 있
+		// 		console.log("response: ",res);
+		// 		//추후 링크에서 리스폰 받아오면 거기에 맞게 연결 해주기
+		// 		if(res.response===200){
+		// 			console.log("i got a response from server");
+		// 		}
+		// 	})
+		// 	.catch(error => console.log('error', error));
 	}
 	const handleInput = (e) => {
 		const { name, value } = e.target;

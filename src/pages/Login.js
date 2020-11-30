@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Link} from "react-router-dom";
 import Header from "../components/layout/Header";
 import LoginForm from "../components/login/LoginForm";
+import url from "../components/url";
 // import {useHistory} from 'react-router-dom';
 import LoginStatus from "../components/login/LoginStatus";
 import axios from "axios";
@@ -29,10 +30,9 @@ function Login({history}) {
 			email: email,
 			password: password,
 		};
-		//const url = "https://jsonplaceholder.typicode.com/posts";
 
 		e.preventDefault();
-		console.log(user); //넘어가는값 확인용. 추후 삭제
+		console.log(url); //넘어가는값 확인용. 추후 삭제
 
 		let myHeaders = new Headers();
 		myHeaders.append("Authorization", "");
@@ -44,7 +44,7 @@ function Login({history}) {
 			body: raw,
 			redirect: 'follow'
 		};
-		fetch("https://172.20.10.3:5000/account/signin", requestOptions)
+		fetch(url()+"/account/signin", requestOptions)
 			.then(response => response.json())
 			.then(data => {//여기 안에 토큰도 들어가 있
 				console.log("token: ",data);
