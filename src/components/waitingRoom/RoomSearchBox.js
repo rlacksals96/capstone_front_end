@@ -41,7 +41,7 @@ export default function RoomSearchBox({
 				</Button>
 			</Link>
 
-			<Link to="./rooms/:roomId/board">
+			<Link to="./rooms/board">
 					<Button className="boardButton" style={{ marginRight: '220px', float: 'right', marginTop: "8px" }}>게시판</Button>
 			</Link>
 			{/*<button onClick={resetContainer}>새로고침</button>*/}

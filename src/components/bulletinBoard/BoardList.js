@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-
-import {Link, Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import "../../styles/BulletinBoard.css";
-
-import BootstrapTable from "react-bootstrap-table-next";
-import paginationFactory from "react-bootstrap-table2-paginator";
+import BoardPagination from './BoardPagination';
 import {Table,Button,Spinner} from "react-bootstrap";
 import Header from "../layout/Header";
-import BoardRead from '../../pages/BoardRead';
 import url from '../url';
 
 const BoardList = () => {
 	const [boards, setBoards] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const [currentPage, setCurrentPage] = useState(1);	//현재페이지
+	const [postsPerPage] = useState(10);	//한페이지에서 보여줄 데이터 개수
+
 
 	useEffect(() => {
 			let myHeaders = new Headers();
@@ -24,12 +23,13 @@ const BoardList = () => {
 				headers: myHeaders,
 				redirect: 'follow'
 				};
-			fetch(url()+"/board?name=jawoo")
+			fetch(`https://jsonplaceholder.typicode.com/posts`)//url()+"/board?name=jawoo"
 				.then(res => res.json())
 				.then(
 					(result) => {
 					setLoading(true);
-					setBoards(result.data);
+					setBoards(result);
+					//setBoards(result.data);
 					// console.log("result:"+boards);
 
 				})
@@ -38,17 +38,21 @@ const BoardList = () => {
 
 	}, []);
 
+	const indexOfLastPost = currentPage * postsPerPage;	//해당 페이지에서 마지막 게시글의 index번호
+	const indexOfFirstPost = indexOfLastPost - postsPerPage;//해당 페이지에서 첫번째 게시글의 index번호
+	const currentPosts = boards.slice(indexOfFirstPost, indexOfLastPost);//각 페이지에서 보여질 게시글 배열
 
-
+	const paginate = (pageNumber) => setCurrentPage(pageNumber);
+	
 	return (
 		<div>
 			<Header />
-			<div className="container">
-				<Link to="./board/create">
+			<div className="container mt-5">
+				<Link to="/rooms/boardcreate">
 					<Button className="writeButton">글쓰기</Button>
 				</Link>
 				{loading ? (
-					<Table striped bordered hover size="sm">
+					<Table  hover size="sm">
 						<thead>
 							<tr>
 								<th>번호</th>
@@ -58,8 +62,7 @@ const BoardList = () => {
 							</tr>
 						</thead>
 						<tbody>
-						{boards.map((data) => (
-
+						{currentPosts.map((data) => (
 							<tr key={data.id}>
 								<td>{data.id}</td>
 								<td >
@@ -71,12 +74,11 @@ const BoardList = () => {
 						))}
 						</tbody>
 					</Table>
-					// <p>hi</p>
 				) : (
 					<Spinner animation="border" />
 				)}
+				<BoardPagination postsPerPage={postsPerPage} totalPosts={boards.length} paginate={paginate} />
 			</div>
-			<Route path="/rooms/:roomId/board/:id" exact={true} component={BoardRead}/>
 		</div>
 	);
 };
