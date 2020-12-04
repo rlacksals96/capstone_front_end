@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Header from "../components/layout/Header";
 import SignUpForm from "../components/signUp/SignUpForm";
@@ -57,7 +56,7 @@ function SignUp({history}) {
 	 };
 	return (
 		<div>
-			<Header />
+			<Header content={null}/>
 			<form onSubmit={submitHandler}>
 				<SignUpForm
 

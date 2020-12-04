@@ -1,7 +1,4 @@
-
-
 import React, { useEffect, useState } from "react";
-
 import { Link} from "react-router-dom";
 import Header from "../components/layout/Header";
 import LoginForm from "../components/login/LoginForm";
@@ -69,7 +66,7 @@ function Login({history}) {
 
 	return (
 		<div>
-			<Header />
+			<Header content={null}/>
 			<h3 id="title">Login</h3>
 			<form onSubmit={handleSubmit}>
 

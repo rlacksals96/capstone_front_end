@@ -64,7 +64,7 @@ function Rooms({history}) {
 
 	return (
 		<div>
-			<Header />
+			<Header content={null}/>
 			<RoomSearchBox
 				roomList={roomList}
 				manageRoomContainer={manageRoomContainer}

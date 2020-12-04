@@ -77,7 +77,7 @@ export default function MkRoom() {
 
 	return(
 		<div>
-			{/*<Header/>*/}
+			<Header content={null}/>
 			<br/>
 			<div>방제목</div>
 			<input type="text" name="roomName" onChange={handleInput} value={roomName} placeholder="insert title"/><br/>

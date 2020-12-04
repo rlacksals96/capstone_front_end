@@ -73,7 +73,7 @@ function BoardCreate(){
 
     return(
         <div>
-            <Header/>
+            <Header content={null}/>
                 <Container style={{marginTop:'100px'}}>
                     <Form>
                         <Form.Group controlId="title">

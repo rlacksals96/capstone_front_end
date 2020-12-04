@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import {useLocation,Link} from 'react-router-dom';
 import url from '../url'
+import Header from '../layout/Header';
+
 export default function GetPassword(props){
 
 
@@ -48,6 +50,7 @@ export default function GetPassword(props){
   }
   return(
     <div>
+      <Header content={null}/>
       <div>비밀번호 입력</div>
       <input type="text" value={password} name="password" onChange={handleChange} />
       <button onClick={handleClick}>확인</button>
