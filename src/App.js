@@ -30,16 +30,17 @@ class App extends Component {
 					{/*<Route path="/rooms/:roomId" exact={true} component={Selection} />*/}
 					<Route path="/rooms/:roomId/room" exact={true} component={Room} />
 					<Route
-						path="/rooms/:roomId/board"
+						path="/rooms/board"
 						exact={true}
 						component={BulletinBoard}
 					/>
-					<Route path="/rooms/:roomId/board/:id"
+					<Route 
+						path="/rooms/board/:id"
 						exact={true}
 						component={BoardRead}
 					/>
 					<Route
-						path="/rooms/:roomId/board/create"
+						path="/rooms/boardcreate"
 						exact={true}
 						component={BoardCreate}
 					/>
