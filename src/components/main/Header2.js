@@ -34,8 +34,8 @@ export default function Header(props) {
     'header-p1': 'Study With Me',
     'header-p2': '는 캠스터디 플렛폼입니다.',
     'description': '이제 혼자하지 마세요. 원하는 스터디에 참여하세요. 다양한 주제 스터디가 운영되고 있어요. 함께 공부할 스터디 친구를 만나보세요',
-    'primary-action': 'Login',
-    'secondary-action': 'Sing Up',
+    'primary-action': 'Sign in',
+    'secondary-action': 'Sign Up',
     'pattern': 'images/pattern1.png',
     ...props.content
   };
