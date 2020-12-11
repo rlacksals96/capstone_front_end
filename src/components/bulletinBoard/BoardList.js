@@ -46,13 +46,13 @@ const BoardList = () => {
 	
 	return (
 		<div>
-			<Header />
+			<Header content={null}/>
 			<div className="container mt-5">
 				<Link to="/rooms/boardcreate">
 					<Button className="writeButton">글쓰기</Button>
 				</Link>
 				{loading ? (
-					<Table  hover size="sm">
+					<Table  hover>
 						<thead>
 							<tr>
 								<th>번호</th>

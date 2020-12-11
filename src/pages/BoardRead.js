@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import {Container} from 'react-bootstrap'
 import '../styles/BoardRead.css';
+import Header from '../components/layout/Header'
 
 function BoardRead({match}){
     
@@ -53,10 +54,14 @@ function BoardRead({match}){
 
 
     return(
-        <Container className='container'>
-            <h3>{board.title}</h3>
-            <p>{board.body}</p>
-        </Container>
+		<div>
+			<Header content={null}/>
+			<Container className='container'>
+            	<h3 className='title'>{board.title}</h3>
+            	<p className='body'>{board.body}</p>
+        	</Container>
+		</div>
+        
     )
 }
 

@@ -1,28 +1,18 @@
 import React from "react";
 import Header from "../components/layout/Header";
-import { Link } from "react-router-dom";
-import imgA from "../images/study_with_me.jpg";
-import { Button } from "reactstrap";
-
-import "../styles/Main.css";
+import Header2 from '../components/main/Header2';
+import HowItWorks2 from '../components/main/HowItWorks2';
 
 const Main = () => {
 	return (
 		<div>
-			<Header />
-			<img src={imgA} />
-			<h1 className="desc">welcome to study with me</h1>
-			<div className="button-container">
-				<Link to="./auth/login">
-					<Button className="loginButton">login page</Button>
-				</Link>
-				<Link to="./auth/signup">
-					<Button className="signUpButton">sign up page</Button>
-				</Link>
-			</div>
+			<Header content={null}/>
+			<Header2></Header2>
+			<HowItWorks2></HowItWorks2>
 		</div>
-	);
-};
+		
+	)
+}
 
 export default Main;
 

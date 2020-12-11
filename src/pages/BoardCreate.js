@@ -53,8 +53,8 @@ function BoardCreate(){
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-            title: {title},
-            content: {content}
+            title: title,
+            content: content
         });
 
         let requestOptions = {
@@ -64,8 +64,8 @@ function BoardCreate(){
             redirect: 'follow'
             };
         
-
-        fetch("/url", requestOptions)
+            
+        fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)//"/url"
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
@@ -73,7 +73,7 @@ function BoardCreate(){
 
     return(
         <div>
-            <Header/>
+            <Header content={null}/>
                 <Container style={{marginTop:'100px'}}>
                     <Form>
                         <Form.Group controlId="title">

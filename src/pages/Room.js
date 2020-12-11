@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 function Room(){
     return(
         <div>
-            <Header/>
+            <Header content={null}/>
             <div>this is study room</div>
 
 

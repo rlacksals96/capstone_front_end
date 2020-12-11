@@ -3,10 +3,8 @@ import Header from "../components/layout/Header";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import RoomSearchBox from "../components/waitingRoom/RoomSearchBox";
-import MkRoom from "../components/waitingRoom/MkRoom";
 import RoomContainer from "../components/waitingRoom/RoomContainer";
-
-import * as ReactBootStrap from "react-bootstrap";
+import '../styles/Rooms.css';
 import url from '../components/url';
 
 import {Button, Spinner} from "react-bootstrap";
@@ -64,15 +62,12 @@ function Rooms({history}) {
 
 	return (
 		<div>
-			<Header />
+			<Header content={null}/>
 			<RoomSearchBox
 				roomList={roomList}
 				manageRoomContainer={manageRoomContainer}
 				resetContainer={resetContainer}
 			/>
-
-
-			{/*<MkRoom />*/}
 
 
 			{/* <Link to="./rooms/1">
