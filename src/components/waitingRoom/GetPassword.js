@@ -8,11 +8,11 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -50,38 +50,42 @@ export default function GetPassword(props){
 
 
   const handleClick=()=>{
-
+		// alert(props.location.state.roomName)
     const pw={
-      name:loc.state.roomName,
+    	email:localStorage.getItem('email'),
+      name:props.location.state.roomName,
       passcode:password
     }
-    console.log(pw);
-    let myHeaders = new Headers();
-    myHeaders.append("Authorization", "");
-    myHeaders.append("Content-Type", "application/json");
-    let raw = JSON.stringify(pw);
-    let requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
-    let status='';
-    fetch(url()+"/room/join", requestOptions)
-      .then(response => {
-        //response.json()
-        status=response.status;
-      })
-      .then(data => {
-        if(status===200){
-          window.open("https://www.google.com");
-        }
-        else{
-          alert("비밀번호가 틀렸습니다")
-        }
-        // console.log("data ",data);
-      })
-      .catch(error => console.log('error', error));
+
+
+		let myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+		let raw = JSON.stringify(pw);
+		let requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+		let status=''//상태코드 저장위해서 사용
+		fetch(url()+"/room/join", requestOptions)
+			.then(response => {
+				status=response.status;
+				//response.json()
+			})
+			.then(result => {
+				console.log("resonse: "+status);
+				if(status){
+					// window.open("http://www.google.com");
+					window.open("https://demos.openvidu.io/openvidu-call/#/"+props.location.state.roomName)
+					window.open(url()+":3001/items?email="+localStorage.getItem('email'),'_blank','width=500px,height=700px');
+				}
+				else{
+					console.log("입장실패");
+				}
+
+			})
+			.catch(error => console.log('error', error));
   }
   
   return (
@@ -108,11 +112,11 @@ export default function GetPassword(props){
 						type="password"
 						id="password"
 						autoComplete="current-password"
-						name="password" 
+						name="password"
 						value={password}
             onChange={handleChange}
 					/>
-					
+
 					<Grid container>
 						<Grid item xs>
 								<Button
@@ -146,17 +150,17 @@ export default function GetPassword(props){
 
       {/* <p>{loc.state.pw}</p> */}
 		</div>
-		
+
     );
     
-  /* return(
-    <div>
-      <Header content={null}/>
-      <div>비밀번호 입력</div>
-      <input type="text" value={password} name="password" onChange={handleChange} />
-      <button onClick={handleClick}>확인</button>
-      <Link to='/rooms'><button>취소</button></Link>
-      {/*<p>{loc.state.pw}</p>*//* }
-    </div>
-  ) */ 
+  //  return(
+  //   <div>
+  //     <Header content={null}/>
+  //     <div>비밀번호 입력</div>
+  //     <input type="text" value={password} name="password" onChange={handleChange} />
+  //     <button onClick={handleClick}>확인</button>
+  //     <Link to='/rooms'><button>취소</button></Link>
+	//
+  //   </div>
+  // )
 }

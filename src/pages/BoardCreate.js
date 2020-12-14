@@ -2,8 +2,8 @@ import axios from 'axios';
 import React,{useState} from 'react';
 import {Container, Form, Button} from 'react-bootstrap';
 import Header from "../components/layout/Header";
-
-function BoardCreate(){
+import url from '../components/url'
+function BoardCreate({history}){
     const[inputs, setInputs] = useState({
         title: '',
         content: ''
@@ -53,8 +53,11 @@ function BoardCreate(){
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-            title: title,
-            content: content
+            name: title,
+            board:'jawoo',
+            content: content,
+            email:localStorage.getItem('email')
+            //board name content
         });
 
         let requestOptions = {
@@ -64,10 +67,21 @@ function BoardCreate(){
             redirect: 'follow'
             };
         
-            
-        fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)//"/url"
-            .then(response => response.text())
-            .then(result => console.log(result))
+        let status=''
+        fetch(url()+"/board/post", requestOptions)//"/url"
+            .then(response => {
+                status=response.status;
+                // console.log(status);
+                return response.json()
+            })
+            .then(result => {
+                console.log(result)
+                if(status===200){
+                    history.push('/rooms/board');
+                }else{
+                    alert("이메일 또는 비밀번호가 잘못되었습니다");
+                }
+            })
             .catch(error => console.log('error', error));
     }
 

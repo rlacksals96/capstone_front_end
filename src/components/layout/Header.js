@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
 	return (
 	  <AppBar position="static" color="primary">
 		<Toolbar className={classes.toolbar}>
-		  <Link component={RouterLink} to="/" color="primary" underline="none" variant="h5" className={classes.brand}>
+		  <Link component={RouterLink} to="/rooms" color="primary" underline="none" variant="h5" className={classes.brand}>
 			{brand}
 		  </Link>
 

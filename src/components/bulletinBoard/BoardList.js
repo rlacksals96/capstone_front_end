@@ -23,15 +23,16 @@ const BoardList = () => {
 				headers: myHeaders,
 				redirect: 'follow'
 				};
-			fetch(`https://jsonplaceholder.typicode.com/posts`)//url()+"/board?name=jawoo"
+			// fetch(`https://jsonplaceholder.typicode.com/posts`)//url()+"/board?name=jawoo"
+			fetch(url()+"/board?name=jawoo")
 				.then(res => res.json())
 				.then(
 					(result) => {
 					setLoading(true);
-					setBoards(result);
-					//setBoards(result.data);
+					// setBoards(result);
+					setBoards(result.data);
 					// console.log("result:"+boards);
-
+					console.log(result);
 				})
 				.catch(error => console.log('error', error));
 				

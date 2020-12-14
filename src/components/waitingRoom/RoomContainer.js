@@ -10,8 +10,10 @@ export default function RoomContainer({ renderList,history }) {
 	const handleClick = (roomName,isPrivate) => {
 		//pass-> isPrivate로 연결됨..초대방 여부 확인인데, 서버쪽 네이밍 문제로 공개방 여부를 pass로 받음.
 
+
 		if(!isPrivate){//공개방인 경우
 			const roomInfo={
+				email:localStorage.getItem('email'),
 				name:roomName,
 				passcode:"NULL"
 			}
@@ -33,7 +35,8 @@ export default function RoomContainer({ renderList,history }) {
 				.then(result => {
 					console.log("resonse: "+status);
 					if(status){
-						window.open("http://www.google.com");
+						// window.open("http://www.google.com");
+						window.open("https://demos.openvidu.io/openvidu-call/#/"+roomName)
 					}
 					else{
 						console.log("입장실패");
@@ -70,7 +73,12 @@ export default function RoomContainer({ renderList,history }) {
 					>
 						<img className="basicImg" src={basicImg} alt="no image" />
 						<div className="roomTitle">{room.name}</div>
-						<div className="roomTitle">{room.pass.toString()}</div>
+						{room.pass.toString()==='true'?
+							<div className="roomTitle">초대방</div>:
+							<div className="roomTitle">공개방</div>
+
+						}
+
 						{/*위 아래 꺼 초대방/공개방 여부 확인하는건 지울 예정 */}
 
 					</li>
