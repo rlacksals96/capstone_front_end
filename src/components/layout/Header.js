@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom';/* 
 import "../../styles/Header.css"; */
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 
 import img from "../../images/study_with_me2.png";
+import url from '../url'
 
 const useStyles = makeStyles((theme) => ({
 	toolbar: {
@@ -56,7 +57,17 @@ const useStyles = makeStyles((theme) => ({
   
   export default function Navigation(props) {
 	const classes = useStyles();
-  
+
+	const [coin,setCoin]=useState(0)
+	useEffect(()=>{
+		fetch(url()+'/coin')
+			.then(res => res.json())
+			.then(
+				(result) => {
+					setCoin(result.coin)
+				})
+			.catch(error => console.log('error', error));
+	},[coin])
 	const content = {
 	  'brand': { image: img, width: 220 },
 	  'primary-action': "Logout",
@@ -83,12 +94,18 @@ const useStyles = makeStyles((theme) => ({
   
 	return (
 	  <AppBar position="static" color="primary">
-		<Toolbar className={classes.toolbar}>
-		  <Link component={RouterLink} to="/rooms" color="primary" underline="none" variant="h5" className={classes.brand}>
-			{brand}
-		  </Link>
 
-		  <Link component={RouterLink} to="/">
+			<Toolbar className={classes.toolbar}>
+
+					<Link component={RouterLink} to="/rooms" color="primary" underline="none" variant="h5" className={classes.brand}>
+						{brand}
+		  		</Link>
+
+
+				<h4 className="coin_style">coin: {coin}</h4>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+
+				<Link component={RouterLink} to="/">
 		  	<Button variant="contained" color="secondary" className={classes.primaryAction} onClick={handleLogout}>{content['primary-action']}</Button>
 		  </Link>
 		  
