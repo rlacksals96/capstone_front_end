@@ -77,9 +77,8 @@ function BoardCreate({history}){
             .then(result => {
                 console.log(result)
                 if(status===200){
-                    history.push('/rooms/board');
-                }else{
-                    alert("이메일 또는 비밀번호가 잘못되었습니다");
+                    alert("저장되었습니다.");
+                    history.goBack();
                 }
             })
             .catch(error => console.log('error', error));
