@@ -30,7 +30,8 @@ class App extends Component {
 						<Route path="/auth/signup" exact={true} component={SignUp} />
 						<Route path="/rooms" exact={true} component={Rooms} />
 						{/*<Route path="/rooms/:roomId" exact={true} component={Selection} />*/}
-						<Route path="/rooms/:roomId/room" exact={true} component={Room} />
+						{/*<Route path="/rooms/:roomId/room" exact={true} component={Room} />*/}
+						{/*방 관련 컴포넌트는 새로운 페이지에서 열린다*/}
 						<Route
 							path="/rooms/board"
 							exact={true}

@@ -76,9 +76,12 @@ export default function GetPassword(props){
 			.then(result => {
 				console.log("resonse: "+status);
 				if(status){
-					// window.open("http://www.google.com");
+
+					// window.open("localhost"+"3001/rooms/:name"+"?name="+props.location.state.roomName)
+
+
 					window.open("https://demos.openvidu.io/openvidu-call/#/"+props.location.state.roomName)
-					window.open(url()+":3001/items?email="+localStorage.getItem('email'),'_blank','width=500px,height=700px');
+					window.open("localhost"+":3002/items?email="+localStorage.getItem('email'),'_blank','width=500px,height=700px');
 				}
 				else{
 					console.log("입장실패");

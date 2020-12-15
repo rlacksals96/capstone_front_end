@@ -36,6 +36,8 @@ export default function RoomContainer({ renderList,history }) {
 					console.log("resonse: "+status);
 					if(status){
 						// window.open("http://www.google.com");
+
+						// window.open("localhost"+"3001/rooms/:name"+"?name="+props.location.state.roomName)
 						window.open("https://demos.openvidu.io/openvidu-call/#/"+roomName)
 					}
 					else{
