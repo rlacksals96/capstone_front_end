@@ -105,7 +105,8 @@ export default function MkRoom() {
 		// 	.catch(error => console.log('error', error));
 
 
-		window.open("http://www.google.com");
+		// window.open("http://www.google.com");
+
 		// history.push('/rooms');
 	}
 	const handleInput = (e) => {
