@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {useLocation} from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import url from '../url'
+import myUrl from '../myUrl'
 import Header from '../layout/Header';
 
 import Avatar from '@material-ui/core/Avatar';
@@ -81,7 +82,7 @@ export default function GetPassword(props){
 
 
 					window.open("https://demos.openvidu.io/openvidu-call/#/"+props.location.state.roomName)
-					window.open("localhost"+":3002/items?email="+localStorage.getItem('email'),'_blank','width=500px,height=700px');
+					window.open(myUrl()+":3002/items?email="+localStorage.getItem('email'),'_blank','width=500px,height=700px');
 				}
 				else{
 					console.log("입장실패");
