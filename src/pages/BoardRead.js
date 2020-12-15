@@ -78,12 +78,27 @@ function BoardRead({match}){
 
 	}, []);
 
+	const {id}=match.params;
+	const d=board[id];
+	const tmp=board.filter((k)=>k.id===d)
+	console.log("test")
+	console.log(tmp);
     return(
 		<div>
 			<Header content={null}/>
+
 			<Container className='container'>
-            	<h3 className='title'>{board.name}</h3>
-            	<p className='body'>{board.content}</p>
+				{board.filter((k)=>k.id==d)
+					.then(result=>{
+						return(
+							<div>
+								<h3 className='title'>{result.title}</h3>
+								<p className='body'>{result.content}</p>
+							</div>
+						)
+					})
+				}
+
         	</Container>
 		</div>
         
