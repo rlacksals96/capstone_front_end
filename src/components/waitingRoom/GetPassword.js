@@ -51,7 +51,7 @@ export default function GetPassword(props){
 
 
   const handleClick=()=>{
-		// alert(props.location.state.roomName)
+		alert(props.location.state.roomName)
     const pw={
     	email:localStorage.getItem('email'),
       name:props.location.state.roomName,
@@ -92,79 +92,79 @@ export default function GetPassword(props){
 			.catch(error => console.log('error', error));
   }
   
-  return (
-		<div>
-			<Header content={null}/>
-			<Container component="main" maxWidth="xs">
-			<CssBaseline />
-			<div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-				<Typography component="h1" variant="h5">
-					Please Enter Password
-				</Typography>
-				<form className={classes.form} noValidate>
-        <TextField
-						variant="outlined"
-						margin="normal"
-						required
-            fullWidth
-            autoFocus
-						label="Insert Password"
-						helperText="비밀번호를 입력하세요."
-						type="password"
-						id="password"
-						autoComplete="current-password"
-						name="password"
-						value={password}
-            onChange={handleChange}
-					/>
-
-					<Grid container>
-						<Grid item xs>
-								<Button
-									type="submit"
-									fullWidth
-									variant="contained"
-									color="primary"
-									className={classes.submit}
-                  onClick={handleClick}
-								>
-									확인
-								</Button>
-						</Grid>
-						<Grid item xs>
-							<Link component={RouterLink} to='/rooms'>
-								<Button
-									type="submit"
-									fullWidth
-									variant="contained"
-									color="primary"
-									className={classes.submit}
-								>
-									취소
-								</Button>
-							</Link>
-						</Grid>
-					</Grid>
-				</form>
-			</div>
-			</Container>
-
-      {/* <p>{loc.state.pw}</p> */}
-		</div>
-
-    );
-    
-  //  return(
-  //   <div>
-  //     <Header content={null}/>
-  //     <div>비밀번호 입력</div>
-  //     <input type="text" value={password} name="password" onChange={handleChange} />
-  //     <button onClick={handleClick}>확인</button>
-  //     <Link to='/rooms'><button>취소</button></Link>
+  // return (
+	// 	<div>
+	// 		<Header content={null}/>
+	// 		<Container component="main" maxWidth="xs">
+	// 		<CssBaseline />
+	// 		<div className={classes.paper}>
+  //       <Avatar className={classes.avatar}>
+  //         <LockOutlinedIcon />
+  //       </Avatar>
+	// 			<Typography component="h1" variant="h5">
+	// 				Please Enter Password
+	// 			</Typography>
+	// 			<form className={classes.form} noValidate>
+  //       <TextField
+	// 					variant="outlined"
+	// 					margin="normal"
+	// 					required
+  //           fullWidth
+  //           autoFocus
+	// 					label="Insert Password"
+	// 					helperText="비밀번호를 입력하세요."
+	// 					type="password"
+	// 					id="password"
+	// 					autoComplete="current-password"
+	// 					name="password"
+	// 					value={password}
+  //           onChange={handleChange}
+	// 				/>
 	//
-  //   </div>
-  // )
+	// 				<Grid container>
+	// 					<Grid item xs>
+	// 							<Button
+	// 								type="submit"
+	// 								fullWidth
+	// 								variant="contained"
+	// 								color="primary"
+	// 								className={classes.submit}
+  //                 onClick={handleClick}
+	// 							>
+	// 								확인
+	// 							</Button>
+	// 					</Grid>
+	// 					<Grid item xs>
+	// 						<Link component={RouterLink} to='/rooms'>
+	// 							<Button
+	// 								type="submit"
+	// 								fullWidth
+	// 								variant="contained"
+	// 								color="primary"
+	// 								className={classes.submit}
+	// 							>
+	// 								취소
+	// 							</Button>
+	// 						</Link>
+	// 					</Grid>
+	// 				</Grid>
+	// 			</form>
+	// 		</div>
+	// 		</Container>
+	//
+  //     {/* <p>{loc.state.pw}</p> */}
+	// 	</div>
+	//
+  //   );
+    
+   return(
+    <div>
+      <Header content={null}/>
+      <div>비밀번호 입력</div>
+      <input type="text" value={password} name="password" onChange={handleChange} />
+      <button onClick={handleClick}>확인</button>
+      <Link to='/rooms'><button>취소</button></Link>
+
+    </div>
+  )
 }

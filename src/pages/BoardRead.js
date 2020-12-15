@@ -36,11 +36,7 @@ function BoardRead({match}){
 
 	}, [match.params.id]);
 
-	const {id}=match.params;
-	const d=board[id];
-	const tmp=board.filter((k)=>k.id===d)
-	console.log("test")
-	console.log(tmp);
+
     return(
 		<div>
 			<Header content={null}/>

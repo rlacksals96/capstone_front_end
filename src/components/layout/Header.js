@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 	const [coin,setCoin]=useState(0)
 	useEffect(()=>{
-		fetch(url()+'/coin')
+		fetch(url()+'/getcoin?email='+localStorage.getItem('email'))
 			.then(res => res.json())
 			.then(
 				(result) => {
