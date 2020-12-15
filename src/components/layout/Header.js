@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
 		  		</Link>
 
 
-				<h4 className="coin_style">coin: {coin}</h4>
+				<h4 style={{"margin-bottom":"0px"}}>coin: {coin}</h4>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<Link component={RouterLink} to="/">
