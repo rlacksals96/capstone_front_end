@@ -9,6 +9,13 @@ const Main = () => {
 			<Header content={null}/>
 			<Header2></Header2>
 			<HowItWorks2></HowItWorks2>
+			<div>
+				<div className="call">
+					<p>heidf
+						
+					</p>
+			</div>
+			</div>
 		</div>
 		
 	)
